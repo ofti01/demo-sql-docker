@@ -1,0 +1,19 @@
+version: '3.8'
+services:
+  demo-sql-docker:
+    build: .
+    ports:
+      - "8088:8088"
+    links:
+      - mysqldb
+    networks:
+      - devino
+  mysqldb:
+    image: mysql
+    networks:
+      - devino
+    environment:
+      - MYSQL_ROOT_PASSWORD=root
+      - MYSQL_DATABASE=bootdb
+networks:
+  devino:
